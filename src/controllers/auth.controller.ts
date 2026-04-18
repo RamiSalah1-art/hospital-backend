@@ -28,7 +28,7 @@ export const register = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    await prisma.user.delete({ where: { username: req.params.username } });
+   await prisma.user.delete({ where: { username: String(req.params.username) } });
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Failed to delete user' });
