@@ -28,3 +28,24 @@ export const updateSettings = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to update settings' });
   }
 };
+
+// POST /api/settings/logo - رفع الشعار
+export const uploadLogo = async (req: Request, res: Response) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const logoUrl = `/uploads/${req.file.filename}`;
+    
+    const settings = await prisma.settings.upsert({
+      where: { id: 1 },
+      update: { logo: logoUrl },
+      create: { logo: logoUrl },
+    });
+
+    res.json({ logo: logoUrl, success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to upload logo' });
+  }
+};
