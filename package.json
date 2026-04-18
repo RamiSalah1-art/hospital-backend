@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "start": "npx prisma migrate deploy && node dist/index.js",
-    "test": "jest"
-    "build": "npx prisma generate && tsc"
-  },
+"scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+  "build": "npx prisma generate && tsc",
+  "start": "npx prisma migrate deploy && node dist/index.js",
+  "test": "jest"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
