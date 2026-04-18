@@ -30,7 +30,7 @@ export const updateSettings = async (req: Request, res: Response) => {
 };
 
 // POST /api/settings/logo - رفع الشعار
-export const uploadLogo = async (req: Request, res: Response) => {
+export const uploadLogo = async (req: any, res: Response) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
