@@ -103,6 +103,17 @@ model Invoice {
   updatedAt    DateTime  @updatedAt
 }
 
+model Settings {
+  id            Int     @id @default(1)
+  hospitalName  String  @default("نظام إدارة المستشفى")
+  logo          String? // Base64 or URL
+  address       String?
+  phone         String?
+  email         String?
+  taxNumber     String?
+  updatedAt     DateTime @updatedAt
+}
+
 enum InvoiceStatus {
   PAID
   UNPAID

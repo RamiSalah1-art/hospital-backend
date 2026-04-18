@@ -10,13 +10,17 @@ import appointmentRoutes from './routes/appointment.routes';
 import medicalRecordRoutes from './routes/medicalRecord.routes';
 import prescriptionRoutes from './routes/prescription.routes';
 import invoiceRoutes from './routes/invoice.routes';
+import settingsRoutes from './routes/settings.routes';
 
 dotenv.config();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://sudan-hospital-system.netlify.app',
+  credentials: true
+}));
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
@@ -28,6 +32,7 @@ app.use('/api/appointments', appointmentRoutes);
 app.use('/api/medical-records', medicalRecordRoutes);
 app.use('/api/prescriptions', prescriptionRoutes);
 app.use('/api/invoices', invoiceRoutes);
+app.use('/api/settings', settingsRoutes);
 
 app.get('/debug-token', (req, res) => {
   const authHeader = req.headers.authorization;
